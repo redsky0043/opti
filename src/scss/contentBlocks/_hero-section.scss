@@ -1,0 +1,164 @@
+@use "../config" as *;
+
+.hero {
+  @include make-spacer(pt, 13);
+  @include make-spacer(mb, 9);
+  @include make-spacer(pt, 19, md);
+  @include make-spacer(pt, 25, xl);
+  @include make-spacer(mb, 17, md);
+  @include make-spacer(mb, 22, xl);
+
+  position: relative;
+  overflow: hidden;
+
+  &__pattern {
+    display: none;
+
+    @include media-breakpoint-up(sm) {
+      @include size(auto, rem(100px));
+
+      aspect-ratio: 7/1;
+      display: block;
+      background-image: url("/img/pattern.svg");
+      background-repeat: no-repeat;
+      background-position: left;
+      background-size: contain;
+      position: absolute;
+      inset: rem(100px) rem(-300px) auto auto;
+    }
+
+    @include media-breakpoint-up(md) {
+      top: rem(170px);
+      right: rem(-400px)
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include size(auto, rem(200px));
+
+      right: rem(-800px)
+    }
+  }
+
+  &__title {
+    @include font(700, 28px, 40px, "heading");
+    @include make-spacer(pb, 2);
+    @include make-spacer(pb, 7, xl);
+
+    span {
+      display: block;
+      font-style: normal;
+
+      &:first-of-type {
+        color: var(--black);
+      }
+
+      &:last-of-type {
+        color: var(--blue);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      @include font-size(56px, 68px);
+
+      max-width: rem(988px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(70px, 86px);
+    }
+  }
+
+  &__img {
+    @include size(100vw, rem(320px));
+
+    position: relative;
+    margin-top: rem(-120px);
+    background: url("/img/hero-bg.jpg") center  no-repeat;
+
+    video {
+      @include size(100%, 100%);
+
+      object-fit: cover;
+    }
+
+    @include media-breakpoint-up(md) {
+      @include size(100%, rem(320px));
+
+      max-width: calc(100% - 24px);
+      margin-top: rem(-80px);
+      border-radius: 0 10px 10px 0;
+      overflow: hidden;
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include size(100%, rem(412px));
+
+      max-width: calc(100% - 104px);
+      background-size: cover;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      @include size(100%, rem(460px));
+
+      max-width: calc(100% - 264px);
+    }
+
+    @media screen and (min-width: 1920px) {
+      width: calc((calc(100vw - 1390px) / 2) + 1390px);
+    }
+  }
+
+  &-banner {
+    @include make-spacer(p, 3);
+    @include make-spacer(pt, 2);
+    @include make-spacer(ml, auto);
+    @include make-spacer(mr, 7);
+    @include make-spacer(p, 3, md);
+    @include make-spacer(p, 4, xl);
+
+    position: relative;
+    width: rem(312px);
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 2px 30px rgba(175, 168, 220, 0.15);
+    z-index: 2;
+
+    @include media-breakpoint-up(md) {
+      @include flex(space-between, center);
+
+      width: rem(654px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      width: rem(873px);
+    }
+
+    &__icon {
+      @include size(rem(26px), rem(37px));
+
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">👉</text></svg>');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-shrink: 0;
+
+      @include media-breakpoint-up(md) {
+        @include size(rem(50px), rem(69px));
+      }
+    }
+
+    &__text {
+      @include font-size(15px, 24px);
+      @include make-spacer(mb, 2);
+      @include make-spacer(mb, 0, md);
+      @include make-spacer(mx, 3, md);
+      @include make-spacer(mx, 3, xl);
+
+      color: var(--gray-3);
+
+      @include media-breakpoint-up(xl) {
+        @include font-size(21px, 32px);
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@use "../config" as *;
+
+.news {
+  &__tags {
+    @include flex(flex-start, flex-start, row, wrap);
+
+    gap: rem(16px);
+  }
+
+  &__wrapper {
+    @include make-spacer(py, 6);
+    @include make-spacer(pt, 10, md);
+    @include make-spacer(pb, 7, md);
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(56px) 0;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: repeat(3, 1fr);
+      gap: rem(64px) rem(42px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      gap: rem(64px) rem(66px);
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+  }
+}

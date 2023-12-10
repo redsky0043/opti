@@ -1,0 +1,92 @@
+@use "../config" as *;
+
+.footer {
+  @include make-spacer(mb, 6);
+
+  color: var(--blue);
+
+  &__wrapper {
+    display: grid;
+    grid-auto-flow: row;
+    justify-content: center;
+    justify-items: center;
+    grid-gap: rem(32px);
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: repeat(2, auto);
+      align-items: flex-start;
+      grid-gap: rem(32px) rem(64px);
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-auto-flow: column;
+      justify-content: space-between;
+    }
+  }
+
+  &__intentify {
+    @include flex(center, center, column);
+
+    gap: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      @include flex(center, flex-start);
+    }
+  }
+
+  &__logo {
+    @include make-spacer(p, 2);
+    @include flex(center, center);
+    @include transition(background-color);
+
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: rem(4px);
+
+    &:hover {
+      background-color: var(--black);
+    }
+  }
+
+  &__icon {
+    @include size(rem(180px), rem(41px));
+
+    fill: currentColor;
+  }
+
+  &__rules {
+    @include font-size(15px, 24px);
+
+    color: var(--gray-3);
+  }
+
+  &__connection {
+    @include flex(center, center, column);
+    @include font(var(--weight-bold), 17px, 26px, "heading");
+
+    gap: rem(16px);
+
+    @include media-breakpoint-up(md) {
+      @include flex(center, flex-start);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(26px, 36px);
+    }
+  }
+
+  &__contact {
+    color: currentColor;
+  }
+
+  &__copyright {
+    @include font-size(15px, 24px);
+    @include flex(center, center, column);
+
+    gap: rem(8px);
+
+    @include media-breakpoint-up(md) {
+      @include flex(center, flex-start);
+    }
+  }
+}

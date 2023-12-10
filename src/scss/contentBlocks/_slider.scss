@@ -1,0 +1,121 @@
+@use '../config' as *;
+
+.slider {
+  .swiper-slide-prev,
+  .swiper-slide-next {
+    background-color: #ededed !important;
+  }
+
+  &__headline {
+    @include make-spacer(mb, 5);
+    @include make-spacer(mb, 7, md);
+    @include make-spacer(mb, 22, xl);
+
+    color: var(--white) !important;
+  }
+
+  &__gallery {
+    position: relative !important;
+  }
+
+  &__item {
+    @include make-spacer(p, 3);
+    @include make-spacer(p, 10, md);
+    @include make-spacer(p, 11, xl);
+    @include transition(#{ transform, background-color });
+
+    display: grid !important;
+    grid-gap: rem(32px) 0 !important;
+    background-color: var(--gray) !important;
+    border-radius: rem(10px) !important;
+    min-height: rem(580px) !important;
+    overflow: hidden !important;
+    cursor: pointer !important;
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: rem(390px) rem(320px) !important;
+      justify-content: space-between !important;
+      grid-gap: 0 rem(70px) !important;
+      min-height: rem(520px) !important;
+    }
+
+    @include media-breakpoint-up(xl) {
+      grid-template-columns: auto rem(380px) !important;
+      grid-gap: 0 rem(115px) !important;
+      min-height: rem(700px) !important;
+    }
+
+    @include media-breakpoint-up(xxl) {
+      grid-template-columns: auto rem(490px) !important;
+    }
+  }
+
+  &__counter {
+    @include make-spacer(mb, 1);
+    @include make-spacer(mb, 2, md);
+    @include font(500, 21px, 30px, "heading");
+
+    @include media-breakpoint-up(md) {
+      @include font-size(26px, 36px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(40px, 50px);
+    }
+  }
+
+  &__title {
+    @include make-spacer(mb, 4);
+    @include make-spacer(mb, 5, md);
+    @include make-spacer(mb, 7, xl);
+    @include font(500, 21px, 30px, "heading");
+
+    @include media-breakpoint-up(md) {
+      @include font-size(26px ,36px);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(40px, 50px);
+    }
+  }
+
+  &__about {
+    @include font-size(15px, 24px);
+
+    color: var(--gray-3) !important;
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(21px, 32px);
+    }
+  }
+
+  &__picture {
+    @include size(100%, rem(174px));
+
+    border-radius: rem(10px) !important;
+    overflow: hidden !important;
+
+    @include media-breakpoint-up(md) {
+      @include size(100%);
+    }
+  }
+
+  &__img {
+    @include size(100%);
+
+    display: block !important;
+    object-fit: cover !important;
+  }
+
+  &__action {
+    @include make-spacer(mt, 5);
+    @include make-spacer(mx, auto);
+    @include make-spacer(mt, 0, xl);
+
+    z-index: map-get($z-indexes, cursor) !important;
+
+    @include media-breakpoint-up(xl) {
+      display: none !important;
+    }
+  }
+}

@@ -1,0 +1,177 @@
+@use '../config' as *;
+
+.header {
+  @include flex(center, center);
+  @include size(auto, var(--header-height));
+  @include position(fixed, 0, 0, auto, 0);
+  @include transition(#{background-color, color});
+
+  z-index: map-get($z-indexes, header);
+  background-color: var(--blue);
+  color: var(--white);
+
+  @include media-breakpoint-up(md) {
+    @include position(fixed, rem(32px), 0, auto, 0);
+
+    background-color: transparent;
+  }
+
+  &.is-menu-opened {
+
+    &:after {
+      visibility: visible;
+      opacity: 0.2;
+
+      @include media-breakpoint-up(md) {
+        display: none;
+      }
+    }
+
+    .header__wrapper {
+      @include media-breakpoint-up(md) {
+        box-shadow: none;
+
+        &:after {
+          visibility: visible;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    .header__overlay {
+      transform: translateX(0);
+    }
+  }
+
+  &.is-article {
+
+    .header__scrollbar {
+      display: block;
+    }
+  }
+
+  &:after {
+    @include size(100%);
+    @include transition(#{opacity, visibility});
+
+    position: absolute;
+    inset: 0 0 0 0;
+    background-color: var(--black);
+    opacity: 0;
+    z-index: 301;
+    visibility: hidden;
+    content: '';
+  }
+
+  &__wrapper {
+    @include size(100%);
+    @include make-spacer(px, 3, md);
+    @include transition(box-shadow);
+
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    grid-template-columns: auto auto;
+    grid-gap: rem(32px);
+    overflow: hidden;
+
+    &:after {
+      @include size(100%);
+      @include transition(#{opacity, visibility});
+
+      position: absolute;
+      inset: 0 0 0 0;
+      background-color: var(--black);
+      opacity: 0;
+      z-index: 301;
+      visibility: hidden;
+      content: '';
+    }
+
+    @include media-breakpoint-up(md) {
+      grid-template-columns: auto 1fr auto;
+      border-radius: rem(10px);
+      background-color: var(--blue);
+      box-shadow: 0 rem(8px) rem(30px) rgba(175, 168, 220, 0.12);
+    }
+
+    @include media-breakpoint-up(xl) {
+      grid-gap: rem(50px);
+    }
+  }
+
+  &__overlay {
+    @include transition(transform);
+    @include size(rem(290px), var(--header-height));
+
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: map-get($z-indexes, headerOverlay);
+    transform: translateX(100%);
+    background-color: var(--black);
+    content: '';
+
+    @include media-breakpoint-up(md) {
+      @include size(rem(440px), var(--header-height));
+
+      inset: rem(32px) 0 0 auto;
+    }
+  }
+
+  &__logo {
+    @include flex(center, center);
+  }
+
+  &__nav {
+    @include make-spacer(ml, 6, xl);
+
+    display: none;
+
+    @include media-breakpoint-up(xl) {
+      display: block;
+    }
+  }
+
+  &__img {
+    @include transition(fill);
+    @include size(rem(132px), rem(30px));
+
+    fill: currentColor;
+
+    &:hover {
+      fill: var(--black);
+    }
+
+    @include media-breakpoint-up(md) {
+      @include size(rem(172px), rem(39px));
+    }
+  }
+
+  &__languages {
+    justify-self: flex-end;
+  }
+
+  &__button {
+    display: none;
+
+    @include media-breakpoint-up(md) {
+      justify-self: flex-end;
+      display: block;
+    }
+  }
+
+  &__burger {
+    z-index: map-get($z-indexes, headerBurger);
+
+    @include media-breakpoint-up(xl) {
+      display: none;
+    }
+  }
+
+  &__scrollbar {
+    display: none;
+    position: absolute;
+    inset: auto 0 0 0;
+  }
+}

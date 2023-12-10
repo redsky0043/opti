@@ -1,0 +1,106 @@
+@use "../config" as *;
+
+.services {
+  @include make-spacer(my, 10);
+  @include make-spacer(my, 17, md);
+  @include make-spacer(my, 22, lg);
+
+  color: var(--white);
+
+  &__title {
+    @include font(700, 26px, 36px, "heading");
+    @include make-spacer(mb, 4);
+
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      @include font-size(48px, 62px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include font-size(62px, 74px);
+    }
+  }
+
+  &__subtitle {
+    @include font(300, 16px, 20px);
+    @include make-spacer(mb, 8);
+    @include make-spacer(mx, auto);
+
+    text-align: center;
+    max-width: rem(900px);
+    color: var(--gray-6);
+
+    @include media-breakpoint-up(md) {
+      @include font(300, 26px, 36px);
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: rem(48px);
+
+    @include media-breakpoint-up(sm) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &-item {
+    @include make-spacer(py, 4);
+    @include make-spacer(px, 3);
+    @include make-spacer(py, 6, md);
+    @include make-spacer(px, 6, md);
+    @include make-spacer(pb, 8, lg);
+    @include make-spacer(px, 8, lg);
+    @include transition(#{ color, background-color });
+
+    display: block;
+    color: var(--blue);
+    background-color: var(--white);
+    border-radius: 10px;
+    position: relative;
+
+    &:hover {
+      color: var(--white);
+      background-color: var(--blue);
+    }
+
+    &__icon {
+      @include size(rem(50px), rem(50px));
+      @include transition(fill);
+      @include make-spacer(mb, 5, md);
+      @include make-spacer(mb, 7, lg);
+
+      fill: currentColor;
+
+      @include media-breakpoint-up(md) {
+        @include size(rem(80px), rem(80px));
+      }
+    }
+
+    &__title {
+      @include font-size(21px, 32px);
+      @include make-spacer(mb, 2);
+      @include make-spacer(mb, 4, md);
+
+      @include media-breakpoint-up(md) {
+        @include font-size(26px, 36px);
+      }
+
+      @include media-breakpoint-up(lg) {
+        @include font(500, 40px, 50px, "heading");
+      }
+    }
+
+    &__text {
+      @include font-size(15px, 24px);
+
+      color: currentColor;
+
+      @include media-breakpoint-up(lg) {
+        @include font-size(21px, 32px);
+      }
+    }
+  }
+}

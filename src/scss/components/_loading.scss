@@ -1,0 +1,12 @@
+@use "../config" as *;
+
+.loading {
+  @include flex(center, center);
+
+  position: absolute;
+  inset: 0 0 0 0;
+  min-height: 100vh;
+  color: var(--black);
+  z-index: 999;
+  background-color: var(--white);
+}

@@ -1,0 +1,121 @@
+@use "../config" as *;
+
+.about {
+  @include make-spacer(my, 10);
+  @include make-spacer(my, 17, md);
+
+  color: var(--white);
+
+  &__title {
+    @include font(700, 26px, 36px, "heading");
+
+    @include media-breakpoint-up(md) {
+      @include font-size(48px, 62px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      @include font-size(62px, 74px);
+    }
+  }
+
+  &__info {
+    @include make-spacer(mt, 3);
+    @include make-spacer(mb, 12);
+    @include make-spacer(mb, 17, lg);
+
+    position: relative;
+    z-index: 1;
+
+    p {
+      @include font-size(15px, 24px);
+
+      @include media-breakpoint-up(lg) {
+        @include font-size(21px, 32px);
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      max-width: rem(470px);
+      margin-left: auto;
+      margin-top: rem(-60px);
+    }
+
+    @include media-breakpoint-up(lg) {
+      max-width: rem(580px);
+      margin-top: rem(-74px);
+    }
+
+    @include media-breakpoint-up(xxl) {
+      max-width: rem(700px);
+    }
+  }
+
+  &-banner {
+    @include position(absolute, auto, 0, -200px, 0);
+    @include make-spacer(p, 3);
+    @include make-spacer(pt, 2);
+    @include make-spacer(p, 3, md);
+
+    background-color: var(--white);
+    border-radius: 10px;
+    box-shadow: 0px 2px 30px rgba(175, 168, 220, 0.15);
+    z-index: 2;
+
+    @include media-breakpoint-up(md) {
+      @include flex(center, center);
+
+      bottom: rem(-130%);
+    }
+
+    &__icon {
+      @include size(rem(26px), rem(37px));
+
+      background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌍</text></svg>');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      flex-shrink: 0;
+
+      @include media-breakpoint-up(md) {
+        @include size(rem(50px), rem(69px));
+      }
+    }
+
+    &__text {
+      @include font-size(15px, 24px);
+      @include make-spacer(mb, 1);
+      @include make-spacer(mb, 0, md);
+      @include make-spacer(mx, 2, md);
+      @include make-spacer(mx, 3, lg);
+
+      color: var(--gray-3);
+    }
+  }
+
+  &__picture {
+    @include size(100vw, rem(320px));
+
+    margin: 0 rem(-24px);
+    overflow: hidden;
+
+    img {
+      @include size(100%, 100%);
+
+      object-fit: cover;
+    }
+
+    @include media-breakpoint-up(md) {
+      margin: 0;
+      border-radius: 10px 0 0 10px;
+    }
+
+    @include media-breakpoint-up(lg) {
+      width: calc((calc(100vw - 1390px) / 2) + 1390px);
+      height: rem(420px);
+    }
+
+    @include media-breakpoint-up(xxl) {
+      height: rem(460px);
+    }
+  }
+}

@@ -1,0 +1,13 @@
+@use '../../abstract/variables/index' as *;
+
+:root {
+  --font-family-regular: #{$regular-fonts-list};
+  --font-family-title: #{$headings-fonts-list};
+  --font-size: #{rem($fs-base, 16px)};
+  --line-height: #{$lh-base};
+  --weight-regular: #{$fw-base};
+  --weight-medium: #{$fw-medium};
+  --weight-semi: #{$fw-semi};
+  --weight-bold: #{$fw-bold};
+  --headings-line-height: #{$lh-headings};
+}

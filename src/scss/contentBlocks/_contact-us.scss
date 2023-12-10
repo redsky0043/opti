@@ -1,0 +1,91 @@
+@use "../config" as *;
+
+.contact-us {
+  @include make-spacer(mt, 11);
+  @include make-spacer(mt, 17, md);
+  @include make-spacer(mt, 22, xl);
+
+  &__wrapper {
+    @include make-spacer(px, 6);
+    @include make-spacer(py, 8);
+    @include make-spacer(px, 11, sm);
+    @include make-spacer(py, 13, sm);
+
+    position: relative;
+    background-color: var(--white);
+    border-radius: rem(8px);
+    z-index: 1;
+
+    @include media-breakpoint-up(sm) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      justify-content: space-between;
+    }
+  }
+
+  &__bg {
+    @include size(auto, rem(200px));
+
+    background-image: url("/img/pattern.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    inset: auto 0 rem(-100px) 0;
+    z-index: -1;
+
+    @include media-breakpoint-up(md) {
+      inset: auto 0 rem(-100px) 0;
+    }
+  }
+
+  &__title {
+    @include make-spacer(mb, 4);
+    @include make-spacer(mb, 0, sm);
+    @include font-size(26px, 30px);
+
+    font-weight: var(--weight-bold);
+    text-align: center;
+
+    @include media-breakpoint-up(sm) {
+      text-align: left;
+    }
+  }
+
+  &__actions {
+    @include make-spacer(mt, 1, sm);
+
+    display: grid;
+    gap: rem(30px);
+    justify-content: center;
+
+    @include media-breakpoint-up(sm) {
+      justify-content: flex-end;
+      gap: rem(53px);
+    }
+  }
+
+  &__link {
+    @include font-size(20px, 28px);
+    @include transition(color);
+
+    font-weight: var(--weight-regular);
+    text-align: center;
+    color: var(--gray-6);
+
+    &:hover {
+      color: var(--blue);
+    }
+
+    @include media-breakpoint-up(sm) {
+      @include font-size(24px, 30px);
+
+      text-align: left;
+      font-weight: var(--weight-medium);
+    }
+
+    @include media-breakpoint-up(xl) {
+      @include font-size(40px, 50px);
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use "../config" as *;
+
+.section-wrapper {
+  @include make-spacer(pt, 9);
+  @include make-spacer(pt, 17, md);
+  @include make-spacer(pt, 17, md);
+
+  position: relative;
+  width: 100%;
+  background-color: var(--black);
+  border-radius: 24px;
+  z-index: 100;
+  margin-bottom: rem(190px);
+}
